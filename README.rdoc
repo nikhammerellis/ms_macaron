@@ -6,10 +6,13 @@ where they could check out what shes been up to with her baking, as well as an o
 FEATURES
 - Main page is the blog page. General public can view blog entries as well as products. Registered and Logged In users 
 can make comments on individual blog posts, as well as access the order request form. 
+
 -Separate admin controls. I am building a secure system where I only show the admin controls to users logged in with an 
 admin status of true. I have also made it so that one cannot force the url to visit admin only pages. 
+
 -There is a products section for her to post products with images to showcase some options friends and family have when 
 placing orders. 
+
 -Admin posting new blog entries or products has the option to add image or not. 
 
 First commit shows most functionality. 
