@@ -1,28 +1,18 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is for a friend who makes baked goods and often sends then to friends and family. She wanted a place 
+where they could check out what shes been up to with her baking, as well as an order system for them to place orders.
 
-Things you may want to cover:
+FEATURES
+- Main page is the blog page. General public can view blog entries as well as products. Registered and Logged In users 
+can make comments on individual blog posts, as well as access the order request form. 
+-Separate admin controls. I am building a secure system where I only show the admin controls to users logged in with an 
+admin status of true. I have also made it so that one cannot force the url to visit admin only pages. 
+-There is a products section for her to post products with images to showcase some options friends and family have when 
+placing orders. 
+-Admin posting new blog entries or products has the option to add image or not. 
 
-* Ruby version
+First commit shows most functionality. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This friend happens to be in California and I am in Seattle. 
+In other words, I will be deploying this as a live site for a remote client. 
