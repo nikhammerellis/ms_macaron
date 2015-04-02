@@ -1,0 +1,34 @@
+<a href="/">Home</a> 
+<h1><%= @blog.title %></h1>
+<p><%= @blog.created_at.to_formatted_s(:long_ordinal) %></p>
+<% if @blog.image? %>
+	<%= image_tag @blog.image.url %>
+<% end %>
+<p><%= @blog.content %></p>
+<% if @user %>
+	<h3>Post Comment</h3>
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p class="red"><%= error %></p>
+		<% end %>
+	<% end %>
+	<% if flash[:success] %>
+		<p><%= flash[:success] %></p>
+	<% end %>
+	<%= form_for @message, :url => messages_create_path do |f| %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		<%= f.hidden_field :blog_id, :value => @blog.id %>
+		<%= f.text_area :message %><br />
+		<%= f.submit "Post Comment" %>
+	<% end %>
+<% end %>
+<h3>Comments</h3>
+<h6>*You must be logged in to post a Comment</h6>
+<div class="comments">
+	<% @messages.each do |message| if @blog.id == message.blog.id %>
+		<p><%= message.user.first_name %> <%= message.user.last_name %> said:</p>
+		<p><%= message.message %></p>
+		<p><%= message.created_at.to_formatted_s(:long_ordinal) %></p>
+	<% end %>
+	<% end %>
+</div>

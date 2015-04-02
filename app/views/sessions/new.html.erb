@@ -1,0 +1,20 @@
+<a href="/">Home</a>
+<div class="log">
+<h2>Log In</h2>
+<%= flash[:error] %>
+<%= form_for( :session, :url => sessions_create_path ) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+</div>

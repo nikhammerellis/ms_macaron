@@ -1,0 +1,46 @@
+<h1>Register to make comments or place order requests</h1>
+<a href="/">Home</a>
+<div class="reg">
+<h2>Register</h2>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p class="red"><%= error %></p>
+	<% end %>
+<% end %>
+<% if flash[:success] %>
+	<p><%= flash[:success] %></p>
+<% end %>
+<%= form_for( :user, :url => users_create_path ) do |f| %>
+
+<div class="field">
+	<%= f.label :first_name %><br />
+	<%= f.text_field :first_name %>
+</div>
+<br />
+<div class="field">
+	<%= f.label :last_name %><br />
+	<%= f.text_field :last_name %>
+</div>
+<br />
+<div class="field">
+	<%= f.label :email %><br />
+	<%= f.text_field :email %>
+</div>
+<br />
+<p>*Password should be at least 8 characters</p>
+<div class="field">
+	<%= f.label :password %><br />
+	<%= f.password_field :password %>
+</div>
+<br />
+<div class="field">
+	<%= f.label "Confirm Password" %><br />
+	<%= f.password_field :password_confirmation %>
+</div>
+<br />
+<div class="actions">
+    <%= f.submit "Register" %>
+ </div>
+
+<% end %>
+</div>

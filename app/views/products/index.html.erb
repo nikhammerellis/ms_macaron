@@ -1,0 +1,11 @@
+<a href="/">Home</a>
+<h1>Products</h1>
+<% @products.each do |product| %>
+	<div class="product">
+		<a href="/products/<%= product.id %>"><h3><%= product.name %></h3></a>
+		<% if product.image? %>
+			<%= image_tag product.image.url %>
+		<% end %>
+		<p><%= product.description %></p>
+	</div>
+<% end %>
