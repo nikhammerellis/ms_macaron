@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:index, :edit, :destroy]
+  before_action :authorize, only: [:index, :destroy]
+  before_action :logged_in, only: [:edit, :update] 
 
   def authorize 
     redirect_to root_url unless current_user && current_user.admin?
+  end
+
+  def logged_in
+    redirect_to root_url unless current_user
   end
 
   def index
@@ -30,9 +35,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to users_index_path
+    if @user.update( user_params )
+      flash[:success] = "Information updated"
+      redirect_to '/'
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to :back
@@ -46,6 +51,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :id)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 end

@@ -1,2 +1,16 @@
-<h1>Blogs#edit</h1>
-<p>Find me in app/views/blogs/edit.html.erb</p>
+<a href="/blogs/<%= @blog.id %>">Back</a>
+<h1>Edit <%= @blog.title %></h1>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p class="red"><%= error %></p>
+	<% end %>
+<% end %>
+<%= form_for @blog, :url => {:action => 'update', :id => @blog.id, method: :patch }, :html => {:multipart => true} do |f| %>
+	<%= f.label :title %><br />
+	<%= f.text_field :title %><br />
+	<%= f.label :content %><br />
+	<%= f.text_area :content %><br /> 
+	<%= f.label :image %><br />
+	<%= f.file_field :image %><br /><br />
+	<%= f.submit :submit %>
+<% end %>

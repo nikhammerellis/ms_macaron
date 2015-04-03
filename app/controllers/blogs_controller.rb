@@ -37,12 +37,23 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find(params[:id])
   end
 
   def update
+    @blog = Blog.find(params[:id])
+    if @blog.update( blog_params )
+      flash[:success] = "Blog Entry Updated"
+      redirect_to '/'
+    else
+      flash[:errors] = @blog.errors.full_messages
+      redirect_to :back
+    end
   end
 
   def destroy
+    Blog.find(params[:id]).destroy 
+    redirect_to '/'
   end
 
   private

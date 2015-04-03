@@ -1,4 +1,10 @@
 <a href="/">Home</a> 
+<% if @user %>
+	<% if @user.admin == true %>
+		<a href="/blogs/<%= @blog.id %>" data-confirm="Are you sure?" data-method="delete"><button>Remove Blog Entry and Associated Comments</button></a>
+		<a href="/blogs/<%= @blog.id %>/edit"><button>Edit Blog</button></a>
+	<% end %> 
+<% end %>
 <h1><%= @blog.title %></h1>
 <p><%= @blog.created_at.to_formatted_s(:long_ordinal) %></p>
 <% if @blog.image? %>
@@ -29,6 +35,9 @@
 		<p><%= message.user.first_name %> <%= message.user.last_name %> said:</p>
 		<p><%= message.message %></p>
 		<p><%= message.created_at.to_formatted_s(:long_ordinal) %></p>
+		<% if @user && message.user.id == @user.id %>
+			<a href="/messages/<%= message.id %>" data-confirm="Are you sure?" data-method="delete"><button>Remove Comment</button></a>
+		<% end %>
 	<% end %>
 	<% end %>
 </div>

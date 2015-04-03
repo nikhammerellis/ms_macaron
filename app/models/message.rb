@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
 
   validates :message,
   			:presence => true,
-  			:length => { :in => 4..2000 }
+  			:length => { :in => 4..5000 }
   validates :blog_id, 
   			:presence => true
   validates :user_id,

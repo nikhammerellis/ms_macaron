@@ -1,0 +1,15 @@
+<a href="/">Home</a>
+<h1>Place Order Request</h1>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p class="red"><%= error %></p>
+	<% end %>
+<% end %>
+<h6>* Note: Until a shopping cart is added, this form is intended for friends and family of Meagan Whitehead only</h6>
+<h6>* Things to include: Quantity, Address, Contact #(if desired), Choose from products listed on the site unless special instructions from Meagan</h6>
+<%= form_for @order, :url => orders_create_path do |f| %> 
+	<%= f.label "Order Details" %><br />
+	<%= f.text_area :content %><br />
+	<%= f.hidden_field :user_id, :value => @user.id %>
+	<%= f.submit "Place Order Request" %>
+<% end %>

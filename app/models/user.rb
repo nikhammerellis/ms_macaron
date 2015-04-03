@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :orders, :dependent => :destroy
 	has_many :messages, :dependent => :destroy
 	attr_accessor :password, :password_confirmation
 
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
 			  :length => { :in => 8..100 }
 	validates :password_confirmation, 
 			  :presence => true
+		
 
 	#before the user gets added to DB, run this function
 	before_save :encrypt_password 

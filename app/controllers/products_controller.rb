@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authorize, only: [:new, :edit, :destroy]
+  before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def authorize 
     redirect_to root_url unless current_user && current_user.admin?
@@ -11,6 +11,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
   end
 
   def new
@@ -29,12 +32,23 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update( product_params )
+      flash[:success] = "Product Updated"
+      redirect_to '/'
+    else
+      flash[:errors] = @product.errors.full_messages
+      redirect_to :back
+    end
   end
 
   def destroy
+    Product.find(params[:id]).destroy 
+    redirect_to '/products/index'
   end
 
   private

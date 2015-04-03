@@ -1,0 +1,6 @@
+<a href="/orders/index">Orders Dashboard</a>
+<h1>Order Details</h1>
+<p>Ordered by: <%= @order.user.first_name %> <%= @order.user.last_name%></p>
+<p>Order Date: <%= @order.created_at.to_formatted_s(:long_ordinal) %></p>
+<p>Contact Email: <%= @order.user.email %></p>
+<p>Order Details:<br /><%= @order.content %></p>

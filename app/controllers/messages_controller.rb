@@ -14,6 +14,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    Message.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private

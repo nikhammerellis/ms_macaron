@@ -1,0 +1,24 @@
+<a href="/">Home</a>
+<h1>Orders</h1>
+<table>
+	<thead>
+		<th>Order Details</th>
+		<th>Order Date</th>
+		<th>Ordered by</th>
+		<th>Contact Email</th>
+		<th>Action</th>
+	</thead>
+
+	<tbody>
+		<% @orders.each do |order| %>
+		<tr>
+			<td><a href="/orders/<%= order.id %>">Details</a></td> 
+			<td><%= order.created_at.to_formatted_s(:long_ordinal) %> </td>
+			<td><%= order.user.first_name %> <%= order.user.last_name %></td>
+			<td><%= order.user.email %></td>
+			<td><a href="/orders/<%= order.id %>" data-confirm="Are you sure?" data-method="delete">Remove</a></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+

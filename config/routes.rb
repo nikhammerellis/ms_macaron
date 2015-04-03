@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'about/show'
+
+  get 'orders/index'
+
+  get 'orders/new'
+
+  get 'orders/:id' => 'orders#show'
+
+  post 'orders/create'
+
+  delete 'orders/:id' => 'orders#destroy'
+
   get 'products/index'
 
   get 'products/new'
@@ -7,17 +19,17 @@ Rails.application.routes.draw do
 
   post 'products/create'
 
-  get 'products/edit'
+  get 'products/:id/edit' => 'products#edit'
 
-  post 'products/update'
+  patch 'products/:id' => 'products#update'
 
-  get 'products/destroy'
+  delete 'products/:id' => 'products#destroy'
 
   get 'messages/index'
 
   post 'messages/create'
 
-  get 'messages/destroy'
+  delete 'messages/:id' => 'messages#destroy'
 
   get 'sessions/new'
 
@@ -33,7 +45,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/edit' => 'users#edit'
 
-  patch 'users/update'
+  patch 'users/:id' => 'users#update'
 
   delete 'users/:id' => 'users#destroy'
 
@@ -45,11 +57,13 @@ Rails.application.routes.draw do
 
   get 'blogs/:id' => 'blogs#show'
 
+  delete 'blogs/:id' => 'blogs#destroy'
+
   post 'blogs/create'
 
-  get 'blogs/edit'
+  get 'blogs/:id/edit' => 'blogs#edit'
 
-  post 'blogs/update'
+  patch 'blogs/:id' => 'blogs#update'
 
   get 'blogs/destroy'
 

@@ -1,5 +1,5 @@
 <a href="/">Home</a>
-<h1>Edit/Remove Registered Users</h1>
+<h1>Remove Registered Users</h1>
 <% if flash[:success] %>
 	<p><%= flash[:success] %></p>
 <% end %>
@@ -17,7 +17,7 @@
 			<td><%= user.first_name %> <%= user.last_name %></td>
 			<td><%= user.email %></td>
 			<td><%= user.admin %></td>
-			<td><a href="/users/<%= user.id %>/edit">Edit</a> | <a href="/users/<%= user.id %>" data-confirm="Are you sure?" data-method="delete">Remove</a></td>
+			<td><a href="/users/<%= user.id %>" data-confirm="Are you sure?" data-method="delete"><button>Remove User</button></a></td>
 		</tr>
 		<% end %>
 	</tbody>

@@ -2,12 +2,16 @@
 <!-- BEGIN REGULAR NAVIGATION -->
 <h2>Regular Navigation</h2>
 <% if !session[:user_id] %>
+<a href="/about/show">About</a>
 <a href="products/index">Products</a>
 <a href="sessions/new">Sign In</a>
 <a href="users/new">Sign Up</a>
 <% end %>
 <% if session[:user_id] %>
+<a href="/about/show">About</a>
 <a href="products/index">Products</a>
+<a href="/orders/new">Place Order Request</a>
+<a href="/users/<%= @user.id %>/edit">Edit Profile</a>
 <a href="/signout">Logout</a>
 <% end %>
 <!-- END REGULAR NAVIGATION -->
@@ -23,10 +27,11 @@
 	<h2>Admin Controls</h2>
 		<a href="blogs/new">Post Blog Entry</a>
 		<a href="products/new">Post New Product</a>
+		<a href="orders/index">Order Requests</a>
 		<a href="users/index">Control Registered Users</a>
 	<% end %>
 <% end %>
-<!-- END ADMIN ONLY CONTROLS -->
+<!-- END ADMIN ONLY CONTROLS / BEGIN BLOG POSTS -->
 <h2>BLOG ENTRIES</h2>
 <% @blogs.each do |blog| %> 
 <div class="blogPost">
