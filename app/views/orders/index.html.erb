@@ -12,11 +12,11 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><a href="/orders/<%= order.id %>">Details</a></td> 
+			<td><a href="/orders/<%= order.id %>" class="button">Details</a></td> 
 			<td><%= order.created_at.to_formatted_s(:long_ordinal) %> </td>
 			<td><%= order.user.first_name %> <%= order.user.last_name %></td>
 			<td><%= order.user.email %></td>
-			<td><a href="/orders/<%= order.id %>" data-confirm="Are you sure?" data-method="delete">Remove</a></td>
+			<td><a href="/orders/<%= order.id %>" data-confirm="Are you sure?" data-method="delete" class="button round alert">Remove</a></td>
 		</tr>
 		<% end %>
 	</tbody>

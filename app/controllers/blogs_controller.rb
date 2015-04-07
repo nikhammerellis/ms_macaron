@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_action :authorize, only: [:new, :edit, :destroy]
 
   def authorize 

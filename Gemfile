@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'compass-rails' # you need this or you get an err
+
+gem 'zurb-foundation', '~> 4.0.0'
+
 gem "paperclip", "~> 4.2"
 
 gem 'hirb'

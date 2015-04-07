@@ -1,45 +1,81 @@
-<h1>The Divine Ms. MMacaron<h1>
-<!-- BEGIN REGULAR NAVIGATION -->
-<h2>Regular Navigation</h2>
-<% if !session[:user_id] %>
-<a href="/about/show">About</a>
-<a href="products/index">Products</a>
-<a href="sessions/new">Sign In</a>
-<a href="users/new">Sign Up</a>
-<% end %>
-<% if session[:user_id] %>
-<a href="/about/show">About</a>
-<a href="products/index">Products</a>
-<a href="/orders/new">Place Order Request</a>
-<a href="/users/<%= @user.id %>/edit">Edit Profile</a>
-<a href="/signout">Logout</a>
-<% end %>
-<!-- END REGULAR NAVIGATION -->
-<% if flash[:success] %>
-	<p><%= flash[:success] %></p>
-<% end %>
-<% if flash[:login_success] %>
-	<p><%= flash[:login_success] %><%= @user.first_name %></p>
-<% end %>
-<!-- BEGIN ADMIN ONLY CONTROLS -->
-<% if @user %>
-	<% if @user.admin == true %>
-	<h2>Admin Controls</h2>
-		<a href="blogs/new">Post Blog Entry</a>
-		<a href="products/new">Post New Product</a>
-		<a href="orders/index">Order Requests</a>
-		<a href="users/index">Control Registered Users</a>
-	<% end %>
-<% end %>
-<!-- END ADMIN ONLY CONTROLS / BEGIN BLOG POSTS -->
-<h2>BLOG ENTRIES</h2>
-<% @blogs.each do |blog| %> 
-<div class="blogPost">
-<a href="blogs/<%= blog.id %>"><h1><%= blog.title %></h1></a>
-<p><%= blog.created_at.to_formatted_s(:long_ordinal) %></p>
-<% if blog.image? %>
-	<%= image_tag blog.image.url %>
-<% end %>
-<p><%= blog.content %></p>
+<div class="row">
+	<div class="twelve columns text-center"><h1 class="logo">The Divine Ms. Mmacaron<h1></div>
 </div>
-<% end %>
+<!-- BEGIN NAV BAR -->
+<div class="contain-to-grid sticky">
+	<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+	  <ul class="title-area">
+	    <li class="name">
+	      <h1><a href="/about">About</a></h1>
+	    </li>
+	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	    	<!-- BEGIN REGULAR NAVIGATION -->
+	    	<% if !session[:user_id] %>
+		      <li class="has-dropdown">
+		        <a href="sessions/new">Sign in or...</a>
+		        <ul class="dropdown">
+		          <li><a href="users/new">Sign Up</a></li>
+		        </ul>
+		      </li>
+		    <% end %>
+		    <% if session[:user_id] %>
+		      <li class="has-dropdown">
+		        <a href="/orders/new">Request order or...</a>
+		        <ul class="dropdown">
+		          <li><a href="/users/<%= @user.id %>/edit">Edit Profile</a></li>
+		          <li><a href="/signout">Logout</a></li>
+		        </ul>
+		      </li>
+		    <% end %>
+		    <!-- END REGULAR NAVIGATION -->
+		    <!-- BEGIN ADMIN NAV -->
+		    <% if @user %>
+				<% if @user.admin == true %>
+			      <li class="has-dropdown">
+			        <a href="blogs/new">Post Blog Entry or...</a>
+			        <ul class="dropdown">
+			          <li><a href="products/new">Post New Product</a></li>
+			          <li><a href="orders/index">Orders Dashboard</a></li>
+			          <li><a href="users/index">Users Dashboard</a></li>
+			        </ul>
+			      </li>
+			    <% end %>
+			<% end %>  
+			<!-- END ADMIN NAV -->
+	    </ul>
+
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+	      <li><a href="products/index">Products</a></li>
+	    </ul>
+	  </section>
+	</nav>
+</div>
+<!-- END NAV BAR -->
+<div class="container">
+<!-- FLASH MESSAGES -->
+	<% if flash[:success] %>
+		<p class="success"><%= flash[:success] %></p>
+	<% end %>
+	<% if flash[:login_success] %>
+		<p><%= flash[:login_success] %><%= @user.first_name %></p>
+	<% end %>
+	<!-- BEGIN BLOG POSTS -->
+	<% @blogs.each do |blog| %> 
+		<div class="blogPost">
+			<a href="blogs/<%= blog.id %>"><h2 class="title"><%= blog.title %></h2></a>
+			<p class="time"><%= blog.created_at.strftime('%b' ' ' '%d' ',' ' ' '%Y') %></p>
+			<% if blog.image? %>
+				<%= image_tag blog.image.url %>
+			<% end %>
+			<p class="content"><%= truncate blog.content, :length => 300 %><%= link_to 'read more', "blogs/"+blog.id.to_s %></p>
+		</div>
+	<% end %>
+	<footer></footer>
+</div> 
