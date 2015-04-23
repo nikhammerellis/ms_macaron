@@ -1,5 +1,15 @@
-<a href="/">Home</a>
-<h1>Orders</h1>
+<div class="tableContainer">
+	<div class="tableBox">
+	<div class="row navigation">
+		<div class="small-12 columns text-center">
+			<a href="/" class="button tiny">Home</a>
+			<a href="/blogs/new" class="button tiny">Post Blog</a>
+			<a href="/products/new" class="button tiny">List Product</a>
+       		<a href="/users/index" class="button tiny">Users</a>
+       		<a href="/messages/index" class="button tiny">Comments</a>
+		</div>
+	</div>
+<h1 class="table_title">Orders</h1>
 <table>
 	<thead>
 		<th>Order Details</th>
@@ -12,13 +22,15 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><a href="/orders/<%= order.id %>" class="button">Details</a></td> 
+			<td><a href="/orders/<%= order.id %>" class="button tiny">Details</a></td> 
 			<td><%= order.created_at.to_formatted_s(:long_ordinal) %> </td>
 			<td><%= order.user.first_name %> <%= order.user.last_name %></td>
 			<td><%= order.user.email %></td>
-			<td><a href="/orders/<%= order.id %>" data-confirm="Are you sure?" data-method="delete" class="button round alert">Remove</a></td>
+			<td><a href="/orders/<%= order.id %>" data-confirm="Are you sure?" data-method="delete" class="button round alert tiny">Remove</a></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+</div>
+</div>
 

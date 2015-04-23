@@ -1,20 +1,40 @@
-<a href="/">Home</a>
-<div class="log">
-<h2>Log In</h2>
-<%= flash[:error] %>
-<%= form_for( :session, :url => sessions_create_path ) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+<div class="formContainer">
+  <div class="formBox">
+
+<div class="row navigation">
+  <div class="small-12 columns text-center">
+    <a href="/" class="button tiny">Home</a>
   </div>
-  <br />
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-  <br />
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+</div>
+    <h3 class="center">Log In</h3>
+    <div class="centered_flash">
+        <%= flash[:error] %>
+    </div>
+    <%= form_for( :session, :url => sessions_create_path ) do |f| %>
+      <div class="row">
+          <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label :email %></div>
+              <div class="small-10 columns"><%= f.email_field :email %></div>
+            </div>
+          </div>
+      
+          <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-3 columns"><%= f.label :password %></div>
+              <div class="small-9 columns"><%= f.password_field :password, autocomplete: "off" %></div>
+            </div>
+          </div>
+
+          <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-6 small-offset-2 columns">
+                <%= f.submit "Log in", :class => "button round tiny success" %>
+              </div>
+              <div class="small-6 columns"><p>No account? <a href="/users/new">Register</a></p></div>
+            </div>  
+          </div>
+        <% end %>
+      </div>
+        </div>
 </div>

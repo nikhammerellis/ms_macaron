@@ -1,39 +1,70 @@
-<a href="/">Home</a>
-<h1>Edit Info</h1>
+<div class="formContainer">
+	<div class="formBox">
+
+
+<div class="row navigation">
+	<div class="small-12 columns text-center">
+		<a href="/" class="button tiny">Home</a>
+	</div>
+</div>
+
+<h2 class="center">Edit Info</h2>
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
 		<p class="red"><%= error %></p>
 	<% end %>
 <% end %>
 <%= form_for @user, :url => { :action => 'update', :id => @user.id, method: :patch } do |f| %>
-	<div class="field">
-		<%= f.label :first_name %><br />
-		<%= f.text_field :first_name %>
+<div class="row">
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-2 columns"><%= f.label :first_name %></div>
+			<div class="small-10 columns"><%= f.text_field :first_name %></div>
+		</div>
 	</div>
-	<br />
-	<div class="field">
-		<%= f.label :last_name %><br />
-		<%= f.text_field :last_name %>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-2 columns"><%= f.label :last_name %></div>
+			<div class="small-10 columns"><%= f.text_field :last_name %></div>
+		</div>
 	</div>
-	<br />
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-2 columns"><%= f.label :email %></div>
+			<div class="small-10 columns"><%= f.text_field :email %></div>
+		</div>
 	</div>
-	<br />
-	<p>*Password should be at least 8 characters</p>
-	<p>*You must fill out password fields to update information<br />*This will update your password if a new one is entered</p>
-	<div class="field">
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-12 columns"><p>*Password should be at least 8 characters</p></div>
+		</div>
 	</div>
-	<br />
-	<div class="field">
-		<%= f.label "Confirm Password" %><br />
-		<%= f.password_field :password_confirmation %>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-12 columns"><p>*You must fill out password fields to update information<br />*This will update your password if a new one is entered</p></div>
+		</div>
 	</div>
-	<br />
-	<div class="actions">
-	    <%= f.submit "Update" %>
-	 </div>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-3 columns"><%= f.label :password %></div>
+			<div class="small-9 columns"><%= f.password_field :password %></div>
+		</div>
+	</div>
+	<div class="small-6 large-centered columns">
+		<div class="row">
+			<div class="small-3 columns"><%= f.label "Confirm Password" %></div>
+			<div class="small-9 columns"><%= f.password_field :password_confirmation %></div>
+		</div>
+	</div>
+	<div class="small-6 large-centered columns">
+        <div class="row">
+            <div class="small-6 small-offset-2 columns">
+                <%= f.submit "Update", :class => "button round tiny success" %>
+            </div>
+        </div>
+    </div>
+</div>
+
 <% end %>
+	</div>
+</div>

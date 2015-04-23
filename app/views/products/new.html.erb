@@ -1,16 +1,53 @@
-<h1>Post a new product</h1>
-<a href="/">Home</a><br /><br />
+<div class="formContainer">
+
+  <div class="formBox">
+
+    <div class="row navigation">
+      <div class="small-12 columns text-center">
+  	   <a href="/" class="button tiny">Home</a>
+       <a href="/products/index" class="button tiny">Products</a>
+       <a href="/blogs/new" class="button tiny">Post Blog</a>
+       <a href="/orders/index" class="button tiny">Orders</a>
+       <a href="/users/index" class="button tiny">Users</a>
+       <a href="/messages/index" class="button tiny">Comments</a>
+      </div>
+    </div>
+<h2 class="center">Post a new product</h2>
+
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
 		<p class="red"><%= error %></p>
 	<% end %>
 <% end %>
 <%= form_for @product, :url => products_create_path, :html => {:multipart => true} do |f| %>
-	<%= f.label :name %><br />
-	<%= f.text_field :name %><br />
-	<%= f.label :description %><br />
-	<%= f.text_area :description %><br /> 
-	<%= f.label :image %><br />
-	<%= f.file_field :image %><br /><br />
-	<%= f.submit :submit %>
+	<div class="row">
+		<div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label :name %></div>
+              <div class="small-10 columns"><%= f.text_field :name %></div>
+            </div>
+        </div>
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label "Desc." %></div>
+              <div class="small-10 columns"><%= f.text_area :description %></div>
+            </div>
+        </div>
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label :image %></div>
+              <div class="small-10 columns"><%= f.file_field :image %></div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-6 small-offset-2 columns">
+                <%= f.submit "List Product", :class => "button round tiny success" %>
+              </div>
+            </div>
+        </div>
+	</div>
 <% end %>
+</div>
+</div>

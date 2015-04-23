@@ -1,16 +1,50 @@
-<a href="/">Home</a><br />
-<h1>Author a blog entry</h1>
+<div class="formContainer">
+  <div class="formBox">
+
+<div class="row navigation">
+  <div class="small-12 columns text-center">
+	   <a href="/" class="button tiny">Home</a>
+     <a href="/products/new" class="button tiny">List Product</a>
+     <a href="/orders/index" class="button tiny">Orders</a>
+     <a href="/users/index" class="button tiny">Users</a>
+     <a href="/messages/index" class="button tiny">Comments</a>
+   </div>
+</div>
+<h2 class="center">Author a blog entry</h2>
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
 		<p class="red"><%= error %></p>
 	<% end %>
 <% end %>
 <%= form_for @blog, :url => blogs_create_path, :html => {:multipart => true} do |f| %>
-	<%= f.label :title %><br />
-	<%= f.text_field :title %><br />
-	<%= f.label :content %><br />
-	<%= f.text_area :content %><br /> 
-	<%= f.label :image %><br />
-	<%= f.file_field :image %><br /><br />
-	<%= f.submit :submit %>
-<% end %>
+	<div class="row">
+		<div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label :title %></div>
+              <div class="small-10 columns"><%= f.text_field :title %></div>
+            </div>
+        </div>
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-3 columns"><%= f.label :content %></div>
+              <div class="small-9 columns"><%= f.text_area :content %></div>
+            </div>
+        </div>
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-2 columns"><%= f.label :image %></div>
+              <div class="small-10 columns"><%= f.file_field :image %></div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="small-6 large-centered columns">
+            <div class="row">
+              <div class="small-6 small-offset-2 columns">
+                <%= f.submit "Post Blog", :class => "button round tiny success" %>
+              </div>
+            </div>
+        </div>
+	</div>
+	<% end %>
+  </div>
+</div>

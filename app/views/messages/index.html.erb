@@ -1,2 +1,35 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="tableContainer">
+	<div class="tableBox">
+<div class="row navigation">
+	<div class="small-12 columns text-center">
+		<a href="/" class="button tiny">Home</a>
+		<a href="/blogs/new" class="button tiny">Post Blog</a>
+		<a href="/products/new" class="button tiny">List Product</a>
+	    <a href="/orders/index" class="button tiny">Orders</a>
+	    <a href="/users/index" class="button tiny">Users</a>
+	</div>
+</div>
+<h1 class="table_title">Manage Comments</h1>
+<table>
+	<thead>
+		<th>Blog Title</th>
+		<th>User Name</th>
+		<th>Comment</th>
+		<th>Date</th>
+		<th>Action</th>
+	</thead>
+
+	<tbody>
+		<% @messages.each do |message| %>
+		<tr>
+			<td><%= message.blog.title %></td>
+			<td><%= message.user.first_name %></td>
+			<td><a href="/messages/<%= message.id %>" class="button tiny">Details</a></td>
+			<td><%= message.created_at.strftime('%b' ' ' '%d' ',' ' ' '%Y')%></td>
+			<td><a href="/messages/<%= message.id %>" data-confirm="Are you sure?" data-method="delete" class="button tiny alert round">Remove Comment</a></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+</div>

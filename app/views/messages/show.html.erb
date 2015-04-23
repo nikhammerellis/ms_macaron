@@ -1,0 +1,17 @@
+<div class="tableContainer">
+	<div class="tableBox">
+		<div class="row navigation">
+			<div class="small-12 columns text-center">
+				<a href="/" class="button tiny">Home</a>
+				<a href="/messages/index" class="button tiny">Comments Dashboard</a>
+						<a href="/messages/<%= @message.id %>" data-confirm="Are you sure?" data-method="delete" class="button tiny alert">Remove Comment</a>
+			</div>
+		</div>
+		<div class="orders">
+			<h1>Comment Details</h1>
+			<p>Comment by: <%= @message.user.first_name %> <%= @message.user.last_name %></p>
+			<p>Blog entry: <%= @message.blog.title %></p>
+			<p><%= @message.message %></p>
+		</div>
+	</div>
+</div>

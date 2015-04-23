@@ -1,5 +1,15 @@
-<a href="/">Home</a>
-<h1>Remove Registered Users</h1>
+<div class="tableContainer">
+	<div class="tableBox">
+		<div class="row navigation ">
+			<div class="small-12 columns text-center">
+				<a href="/" class="button tiny">Home</a>
+				<a href="/blogs/new" class="button tiny">Post Blog</a>
+				<a href="/products/new" class="button tiny">List Product</a>
+	       		<a href="/orders/index" class="button tiny">Orders</a>
+	       		<a href="/messages/index" class="button tiny">Comments</a>
+			</div>
+		</div>
+<h1 class="table_title">Remove Registered Users</h1>
 <% if flash[:success] %>
 	<p><%= flash[:success] %></p>
 <% end %>
@@ -17,9 +27,11 @@
 			<td><%= user.first_name %> <%= user.last_name %></td>
 			<td><%= user.email %></td>
 			<td><%= user.admin %></td>
-			<td><a href="/users/<%= user.id %>" data-confirm="Are you sure?" data-method="delete"><button>Remove User</button></a></td>
+			<td><a href="/users/<%= user.id %>" data-confirm="Are you sure?" data-method="delete" class="button tiny alert round">Remove User</a></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+</div>
+</div>
 

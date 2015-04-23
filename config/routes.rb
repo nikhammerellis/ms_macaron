@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   post 'messages/create'
 
+  get 'messages/:id' => 'messages#show'
+
   delete 'messages/:id' => 'messages#destroy'
 
   get 'sessions/new'

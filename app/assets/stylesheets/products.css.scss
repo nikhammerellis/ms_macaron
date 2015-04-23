@@ -1,3 +1,39 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.product {
+	margin-left: 25px;
+
+	width: 200px;
+	height: 200px;
+	background-color: white;
+	overflow: auto;
+	border: 3px solid black;
+}
+h1.products {
+	text-align: center;
+	color: white;
+}
+span.prodImg {
+	width: 100%;
+}
+div.formContainer {
+	padding-top: 50px;
+	padding-bottom: 300px;
+	background: url(/assets/orange2.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+.prodTitle {
+	color: black;
+}
+div.formBox {
+	margin-top: 50px;
+	padding-bottom: 50px;
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: white;
+	border: 3px solid black;
+}

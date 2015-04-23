@@ -1,5 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :authorize, only: [:index, :show]
+
+  def authorize 
+    redirect_to root_url unless current_user && current_user.admin?
+  end
+
   def index
+    @messages = Message.all.order(created_at: :desc)
   end
 
   def create
@@ -11,6 +18,10 @@ class MessagesController < ApplicationController
     	flash[:errors] = @message.errors.full_messages
     	redirect_to :back
     end 
+  end
+
+  def show
+    @message = Message.find(params[:id])
   end
 
   def destroy

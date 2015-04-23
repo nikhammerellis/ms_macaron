@@ -1,6 +1,18 @@
-<a href="/orders/index">Orders Dashboard</a>
-<h1>Order Details</h1>
-<p>Ordered by: <%= @order.user.first_name %> <%= @order.user.last_name%></p>
-<p>Order Date: <%= @order.created_at.to_formatted_s(:long_ordinal) %></p>
-<p>Contact Email: <%= @order.user.email %></p>
-<p>Order Details:<br /><%= @order.content %></p>
+
+<div class="tableContainer">
+	<div class="tableBox">
+		<div class="row navigation">
+			<div class="small-12 columns text-center">
+				<a href="/" class="button tiny">Home</a>
+				<a href="/orders/index" class="button tiny">Orders Dashboard</a>
+			</div>
+		</div>
+		<div class="orders">
+			<h1>Order Details</h1>
+			<p>Ordered by: <%= @order.user.first_name %> <%= @order.user.last_name%></p>
+			<p>Order Date: <%= @order.created_at.to_formatted_s(:long_ordinal) %></p>
+			<p>Contact Email: <%= @order.user.email %></p>
+			<p>Order Details:<br /><%= @order.content %></p>
+		</div>
+	</div>
+</div>

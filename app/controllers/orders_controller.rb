@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
+      OrderMailer.email_meagan(@order).deliver
       flash[:success] = 'Order placed!'
       redirect_to '/' 
     else

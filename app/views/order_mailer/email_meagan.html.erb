@@ -1,0 +1,8 @@
+<p>
+  <%= @greeting %>, </br >
+  <h3>Order</h3>
+  <p>Order Date: <%= @order.created_at.to_formatted_s(:long_ordinal) %></p> 
+  <p>Ordered by: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
+  <p>Contact Email: <%= @order.user.email %></p>
+  <p>Order Details:<br /><%= @order.content %></p>			
+</p>

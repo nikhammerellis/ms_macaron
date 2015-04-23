@@ -1,15 +1,35 @@
-<a href="/">Home</a>
-<h1>Products</h1>
-<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-	<% @products.each do |product| %>
-		<li>
-			<div class="product">
-				<a href="/products/<%= product.id %>"><h3><%= product.name %></h3></a>
-				<% if product.image? %>
-					<%= image_tag product.image.url %>
+<div class="formContainer">
+
+<div class="row navigation">
+	<div class="small-12 columns text-center">
+		<a href="/" class="button tiny">Home</a>
+		<% if @user %>
+				<% if @user.admin == true %>
+					<a href="/products/new" class="button tiny">List New Product</a>
 				<% end %>
-				<p><%= product.description %></p>
-			</div>
-		</li>
-	<% end %>
-</ul>
+		<% end %>
+	</div>
+</div>
+
+<h1 class="products">Products</h1>
+
+	<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+		<% @products.each do |product| %>
+			<li>
+				<a href="/products/<%= product.id %>">
+				<div class="product">
+					
+					<h3 class="center prodTitle"><%= product.name %></h3>
+					<% if product.image? %>
+						<span class="prodImg"><%= image_tag product.image.url %></span>
+					<% end %>
+					<!-- REMOVE 
+					<p><%#= truncate product.description, :length => 100 %><%#= link_to 'read more', "/products/"+product.id.to_s %></p>
+					REMOVE -->
+					
+				</div>
+				</a>
+			</li>
+		<% end %>
+	</ul>
+</div>

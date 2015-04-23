@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def authorize 
@@ -7,6 +8,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.order(created_at: :desc)
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
   end
 
   def show
