@@ -8,7 +8,9 @@
 </div>
     <h3 class="center">Log In</h3>
     <div class="centered_flash">
-        <%= flash[:error] %>
+      <% if flash[:error] %>
+        <p class="red"><%= flash[:error] %></p>
+        <% end %>
     </div>
     <%= form_for( :session, :url => sessions_create_path ) do |f| %>
       <div class="row">
